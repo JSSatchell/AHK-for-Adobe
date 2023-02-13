@@ -1,3 +1,7 @@
+// JSSatchell Media 2023
+
+// As demonstrated in this video: https://youtu.be/o37TgQ9jIYg
+
 // Should be used only in the composition timeline window with one or more layers selected which are named starting with a two-digit number followed by an underscore.
 // If the layer name begins with a number less than 10, it must start with a leading 0 which will be retained when using the script.
 
