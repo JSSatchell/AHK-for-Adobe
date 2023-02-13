@@ -1,3 +1,5 @@
+//JSSatchell Media 2023
+
 var comp = app.project.activeItem;
 var layers = comp.selectedLayers;
 var ddBased = [
