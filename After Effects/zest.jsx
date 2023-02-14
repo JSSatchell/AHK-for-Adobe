@@ -1,7 +1,7 @@
 // JSSatchell Media 2023
 
 // Shamelessly inspired by Battle Axe's awesome Void scripts which can be found here: https://www.battleaxe.co/void
-// Really I just missed the feature of Turbo Layers to create Solids and Adjustment Layers that were the same length as the selected layers so I took it as a scripting challenge to build my own toolkit.
+// Really I just missed the feature of Turbo Layers to create Solids and Adjustment Layers that were the same length as the selected layers, so I took it as a scripting challenge to build my own toolkit
 
 // zest is my version of a new Adjustment Layer, or Battle Axe's Variant
 
@@ -25,6 +25,7 @@ zestShape.property("Size").setValue([comp.width,comp.height]);
 zestLayer.adjustmentLayer = 1;
 var zestFill = zestGroup.property("Contents").addProperty("ADBE Vector Graphic - Fill");
 zestFill.property("Color").setValue([0,0,0]);
+var adjColor = app.preferences.getPrefAsLong("Label Preference Indices Section 5", "Adjustment Label Index 2", PREFType.PREF_Type_MACHINE_INDEPENDENT);
 
 if(layers.length > 0) {
     var newIn;
@@ -53,6 +54,6 @@ if(layers.length > 0) {
     zestLayer.outPoint = maxOut;
 }
 
-zestLayer.label = 1;
+zestLayer.label = adjColor;
 
 app.endUndoGroup();
