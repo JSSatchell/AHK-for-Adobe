@@ -1,7 +1,7 @@
 // JSSatchell Media 2023
 
 // Shamelessly inspired by Battle Axe's awesome Void scripts which can be found here: https://www.battleaxe.co/void
-// Really I just missed the feature of Turbo Layers to create Solids and Adjustment Layers that were the same length as the selected layers so I took it as a scripting challenge to build my own toolkit.
+// Really I just missed the feature of Turbo Layers to create Solids and Adjustment Layers that were the same length as the selected layers, so I took it as a scripting challenge to build my own toolkit
 
 // zilch is my version of a new Null, or Battle Axe's Void
 
@@ -28,6 +28,13 @@ var strokeColor = zilchStroke.property("Color").setValue([0,200,255]);
 var dash1 = zilchStroke.property("Dashes").addProperty("ADBE Vector Stroke Dash 1").setValue(2);
 var gap1 = zilchStroke.property("Dashes").addProperty("ADBE Vector Stroke Gap 1").setValue(2);
 var offset = zilchStroke.property("Dashes").addProperty("ADBE Vector Stroke Offset").setValue(4);
+if (app.preferences.havePref("Label Preference Indices Section 5", "Null Label Index", PREFType.PREF_Type_MACHINE_INDEPENDENT) == 1) {
+    var nullColor = app.preferences.getPrefAsLong("Label Preference Indices Section 5", "Null Label Index", PREFType.PREF_Type_MACHINE_INDEPENDENT);
+} else if (app.preferences.havePref("Label Preference Indices Section 5", "Null Label Index 2", PREFType.PREF_Type_MACHINE_INDEPENDENT) == 1) {
+    nullColor = app.preferences.getPrefAsLong("Label Preference Indices Section 5", "Null Label Index 2", PREFType.PREF_Type_MACHINE_INDEPENDENT);
+} else {
+    nullColor = 9;
+}
 
 if(layers.length > 0) {
     var newIn;
@@ -68,6 +75,6 @@ if(layers.length > 0) {
     zilchLayer.outPoint = maxOut;
 }
 
-zilchLayer.label = 9;
+zilchLayer.label = nullColor;
 
 app.endUndoGroup();
