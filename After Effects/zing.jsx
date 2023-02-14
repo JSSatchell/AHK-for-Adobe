@@ -1,9 +1,9 @@
 // JSSatchell Media 2023
 
 // Shamelessly inspired by Battle Axe's awesome Void scripts which can be found here: https://www.battleaxe.co/void
-// Really I just missed the feature of Turbo Layers to create Solids and Adjustment Layers that were the same length as the selected layers so I took it as a scripting challenge to build my own toolkit.
+// Really I just missed the feature of Turbo Layers to create Solids and Adjustment Layers that were the same length as the selected layers, so I took it as a scripting challenge to build my own toolkit
 
-// Zing is my version of a new Solid, or Battle Axe's Volume
+// zing is my version of a new Solid, or Battle Axe's Volume
 
 var comp = app.project.activeItem;
 var layers = comp.selectedLayers;
@@ -16,14 +16,6 @@ for (var i=1; i < allLayers.length; i++) {
     if (allLayers[i].name.search("zing")>0)
         index++;
 }
-
-/*
-for (var i=1; i < allLayers.length; i++) {
-    nameSearch = "zing" + index;
-    if (allLayers[i].name.search('${nameSearch}')>-1)
-        index+=2;
-}
-*/
 var zingLayer = comp.layers.addShape();
 zingLayer.name = " - zing " + index + " - ";
 var zingGroup = zingLayer.property("Contents").addProperty("ADBE Vector Group");
@@ -32,6 +24,13 @@ var zingShape = zingGroup.property("Contents").addProperty("ADBE Vector Shape - 
 zingShape.property("Size").setValue([comp.width,comp.height]);
 var zingFill = zingGroup.property("Contents").addProperty("ADBE Vector Graphic - Fill");
 zingFill.property("Color").setValue([0,0,0]);
+if (app.preferences.havePref("Label Preference Indices Section 5", "Solid Label Index", PREFType.PREF_Type_MACHINE_INDEPENDENT) == 1) {
+    var solidColor = app.preferences.getPrefAsLong("Label Preference Indices Section 5", "Solid Label Index", PREFType.PREF_Type_MACHINE_INDEPENDENT);
+} else if (app.preferences.havePref("Label Preference Indices Section 5", "Solid Label Index 2", PREFType.PREF_Type_MACHINE_INDEPENDENT) == 1) {
+    solidColor = app.preferences.getPrefAsLong("Label Preference Indices Section 5", "Solid Label Index 2", PREFType.PREF_Type_MACHINE_INDEPENDENT);
+} else {
+    solidColor = 11;
+}
 
 if(layers.length > 0) {
     var newIn;
@@ -60,6 +59,6 @@ if(layers.length > 0) {
     zingLayer.outPoint = maxOut;
 }
 
-zingLayer.label = 11;
+zingLayer.label = solidColor;
 
 app.endUndoGroup();
