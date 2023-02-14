@@ -3,6 +3,8 @@
 // Shamelessly inspired by Battle Axe's awesome Void scripts which can be found here: https://www.battleaxe.co/void
 // Really I just missed the feature of Turbo Layers to create Solids and Adjustment Layers that were the same length as the selected layers so I took it as a scripting challenge to build my own toolkit.
 
+// zilch is my version of a new Null, or Battle Axe's Void
+
 var comp = app.project.activeItem;
 var layers = comp.selectedLayers;
 var allLayers = comp.layers;
