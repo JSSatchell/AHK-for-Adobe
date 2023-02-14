@@ -25,7 +25,13 @@ zestShape.property("Size").setValue([comp.width,comp.height]);
 zestLayer.adjustmentLayer = 1;
 var zestFill = zestGroup.property("Contents").addProperty("ADBE Vector Graphic - Fill");
 zestFill.property("Color").setValue([0,0,0]);
-var adjColor = app.preferences.getPrefAsLong("Label Preference Indices Section 5", "Adjustment Label Index 2", PREFType.PREF_Type_MACHINE_INDEPENDENT);
+if (app.preferences.havePref("Label Preference Indices Section 5", "Adjustment Label Index", PREFType.PREF_Type_MACHINE_INDEPENDENT) == 1) {
+    var adjColor = app.preferences.getPrefAsLong("Label Preference Indices Section 5", "Adjustment Label Index", PREFType.PREF_Type_MACHINE_INDEPENDENT);
+} else if (app.preferences.havePref("Label Preference Indices Section 5", "Adjustment Label Index 2", PREFType.PREF_Type_MACHINE_INDEPENDENT) == 1) {
+    adjColor = app.preferences.getPrefAsLong("Label Preference Indices Section 5", "Adjustment Label Index 2", PREFType.PREF_Type_MACHINE_INDEPENDENT);
+} else {
+    adjColor = 1;
+}
 
 if(layers.length > 0) {
     var newIn;
