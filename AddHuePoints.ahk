@@ -1,4 +1,11 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+;; JSSatchell 2023
+
+;; Note: This is an AutoHotkey v1 script
+
+;; This script adds a point at each of the major hues when the mouse is located near one of the Hue & Saturation curves in Lumetri color in either Adobe Premiere or Adobe After Effects
+;; Demonstration video: https://youtu.be/-09jKyg-uec
+
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
